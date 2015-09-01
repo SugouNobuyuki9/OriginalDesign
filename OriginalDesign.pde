@@ -2,7 +2,7 @@
 // Click to grow spheres
 // They pop when they become too large
 
-int size = 28;
+int sphereSize = 28;
 
 void setup(){
 	size(200,200, OPENGL);
@@ -16,14 +16,14 @@ void draw(){
 	translate(mouseX, mouseY, 0);
 	fill(mouseX,mouseY, (int)(Math.random()*255), 99);
 	
-	sphere(size);
+	sphere(sphereSize);
 
-	if(size > 76){
-		size = 27;
+	if(sphereSize > 76){
+		sphereSize = 27;
 		background(30,30,75);
 	}
 }
 
 void mousePressed(){
-	size += 3;
+	sphereSize += 3;
 }
