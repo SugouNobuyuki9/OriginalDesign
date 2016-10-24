@@ -1,31 +1,33 @@
-void setup()
-{
-	size(300,300);
-	background(0);
-	noLoop();
+PImage backImg = loadImage("http://i.imgur.com/cXaR0vS.png");
+PImage birdImg = loadImage("http://i.imgur.com/U5PYwXr.png"); //"http://i.imgur.com/mw0ai3K.png"
+PImage wallImg = loadImage("http://i.imgur.com/4SUsUuc.png");
+PImage startImg = loadImage("http://i.imgur.com/U6KEwxe.png");
+int gamestate = 0;
+int x = -200, y, Vy = 1;
+
+void setup() {
+  size(600, 800); 
+  frameRate(30);
+} 
+
+void draw(){
+  if(gamestate == 0){
+    imageMode(CORNER);
+    image(backImg, x, 0);
+    image(backImg, x+backImg.width, 0);
+    scale(0.3);
+    image(birdImg, width/2, y);
+    scale(10/0.3);
+    x-=6;
+    Vy += 2*3;
+    y += Vy;
+  } 
+  else {
+    imageMode(CENTER);
+    image(startImg, width, height/2); 
+  }
 }
 
-void draw()
-{
-	fill(120);
-	noStroke();
-
-	for(int r = 45; r<=245; r+=50)
-	{
-		rect(0, r, 300, 10);
-	}
-
-	for(int c = 45; c<=245; c+=50)
-	{
-		rect(c, 0, 10, 300);
-	}
-
-	fill(235);
-	for(int y = 50; y<=250; y+=50){
-		for(int x = 50; x<=250; x+=50){
-			ellipse(x, y, 15, 15);
-		}
-	}
-
-
+void mousePressed(){
+  Vy = -15*3; 
 }
